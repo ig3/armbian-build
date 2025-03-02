@@ -10,7 +10,7 @@ MODULES="g_serial"
 MODULES_BLACKLIST="rockchipdrm analogix_dp dw_mipi_dsi dw_hdmi gpu_sched lima hantro_vpu"
 SERIALCON="ttyS2:1500000,ttyGS0"
 HAS_VIDEO_OUTPUT="no"
-BOOT_FDT_FILE="rockchip/rk3328-nanopi-r2-rev00.dtb"
+BOOT_FDT_FILE="rockchip/rk3328-nanopi-r2s-plus.dtb"
 
 function post_family_tweaks__nanopi-r2s_rename_USB_LAN() {
 	display_alert "$BOARD" "Installing board tweaks" "info"
