@@ -9,8 +9,8 @@
 #include "rk3328-nanopi-r2s.dts"
 
 / {
-	model = "FriendlyElec NanoPi R2S";
-	compatible = "friendlyelec,nanopi-r2", "rockchip,rk3328";
+	model = "FriendlyElec NanoPi R2S Plus";
+	compatible = "friendlyelec,nanopi-r2s-plus", "friendlyelec,nanopi-r2", "rockchip,rk3328";
 
 	gpio-keys {
 		compatible = "gpio-keys";
@@ -121,6 +121,27 @@
 
 		usb30_en_drv: usb30-en-drv {
 			rockchip,pins = <2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+};
+
+/delete-node/ &rtl8211e;
+
+&gmac2io {
+	phy-handle = <&ethpy1>;
+	snps,reset-delays-us = <0 15000 50000>;
+	tx_delay = <0x22>;
+	rx_delay = <0x12>;
+
+	mdio {
+		compatible = "snps,dwmac-mdio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		ethpy1: ethernet-phy@1 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <0x1>;
+			realtek,ledsel = <0xae00>;
 		};
 	};
 };
